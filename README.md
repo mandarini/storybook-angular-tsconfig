@@ -1,27 +1,49 @@
-# Tsconf
+# Contents
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.0.
+Angular application, configured with Storybook. Changed Storybook configuration file (`main.js`) to `main.ts`, as described [here](https://storybook.js.org/docs/react/configure/overview#configure-your-project-with-typescript).
 
-## Development server
+## Steps I followed
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. `ng new my-app`
+2. `npx sb init`
+3. Steps decsribed [here](https://storybook.js.org/docs/angular/configure/overview#configure-your-project-with-typescript), renamed `main.js` to `main.ts`, adjusted contents, created `.babelrc` file.
 
-## Code scaffolding
+## Storybook does not work
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+yarn storybook
+```
 
-## Build
+and
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+yarn build-storybook
+```
 
-## Running unit tests
+and
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+ng run my-app:storybook
+```
 
-## Running end-to-end tests
+and
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```
+ng build my-app:build-storybook
+```
 
-## Further help
+fail with this error:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```
+ERR! Error: Debug Failure. False expression: Non-string value passed to `ts.resolveTypeReferenceDirective`, likely by a wrapping package working with an outdated `resolveTypeReferenceDirectives` signature. This is probably not a problem in TS itself.
+ERR!     at Object.resolveTypeReferenceDirective (/Users/katerina/Projects/nrwl/SB-NG/my-app/node_modules/typescript/lib/typescript.js:43193:18)
+ERR!     at /Users/katerina/node_modules/ts-node/src/index.ts:623:55
+ERR!     at Array.map (<anonymous>)
+ERR!     at Object.resolveTypeReferenceDirectives (/Users/katerina/node_modules/ts-node/src/index.ts:622:33)
+ERR!     at actualResolveTypeReferenceDirectiveNamesWorker (/Users/katerina/Projects/nrwl/SB-NG/my-app/node_modules/typescript/lib/typescript.js:118257:163)
+ERR!     at resolveTypeReferenceDirectiveNamesWorker (/Users/katerina/Projects/nrwl/SB-NG/my-app/node_modules/typescript/lib/typescript.js:118557:26)
+ERR!     at processTypeReferenceDirectives (/Users/katerina/Projects/nrwl/SB-NG/my-app/node_modules/typescript/lib/typescript.js:120054:31)
+ERR!     at findSourceFileWorker (/Users/katerina/Projects/nrwl/SB-NG/my-app/node_modules/typescript/lib/typescript.js:119939:21)
+ERR!     at findSourceFile (/Users/katerina/Projects/nrwl/SB-NG/my-app/node_modules/typescript/lib/typescript.js:119791:26)
+ERR!     at processImportedModules (/Users/katerina/Projects/nrwl/SB-NG/my-app/node_modules/typescript/lib/typescript.js:120200:25)
+```
